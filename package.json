@@ -1,7 +1,14 @@
 {
   "name": "minesweeper",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
+  "description": "A minesweeper game",
+  "keywords": ["game", "minesweeper", "react", "typescript", "windows"],
+  "homepage": "https://toxuh.github.io/minesweeper",
+  "repository": "https://github.com/toxuh/minesweeper",
+  "bugs": "https://github.com/toxuh/minesweeper/issues",
+  "author": "Anton Zakharov <zakharov.toxa@gmail.com> (https://github.com/toxuh)",
+  "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
     "gh-pages": "^3.1.0",

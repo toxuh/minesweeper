@@ -14,4 +14,6 @@ WIP:
 - Difficulty
 - Themes
 
+Check it [here](https://toxuh.github.io/minesweeper/).
+
 Will be very happy for contributing. Thanx.
