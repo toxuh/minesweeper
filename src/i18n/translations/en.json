@@ -1,0 +1,7 @@
+{
+  "App.lose": "You lose",
+  "App.minesLeft": "Mines left",
+  "App.title": "Minesweeper",
+  "App.tryAgain": "Try again",
+  "App.win": "You win"
+}

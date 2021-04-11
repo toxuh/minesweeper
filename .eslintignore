@@ -1,0 +1,9 @@
+**/node_modules
+
+**/src/serviceWorker.ts
+**/src/reportWebVitals.ts
+
+**/coverage
+
+**/build
+tsconfig.json
