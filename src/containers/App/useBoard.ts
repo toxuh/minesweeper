@@ -59,6 +59,7 @@ const useBoard = (): ReturnType => {
     }
 
     setBoard(arr.flat());
+    setMinesCount(NUMBER_OF_MINES);
     setEndGame(false);
   };
 
@@ -136,6 +137,21 @@ const useBoard = (): ReturnType => {
     return tiles.filter((t) => t.key !== key);
   };
 
+  const reveal = (tile: Tile) => {
+    const neighborTiles = nearTiles(tile);
+    const hasMinesTiles = neighborTiles.filter((n) => n.mine);
+
+    if (tile.status !== 'hidden') {
+      return;
+    }
+
+    setStatusHandler(tile, 'number');
+
+    if (hasMinesTiles.length !== 0) {
+      setContentHandler(tile, hasMinesTiles.length.toString());
+    }
+  };
+
   const handleLeftClick = (tile: Tile) => {
     const neighborTiles = nearTiles(tile);
     const hasMinesTiles = neighborTiles.filter((t) => t.mine);
@@ -149,7 +165,6 @@ const useBoard = (): ReturnType => {
     }
 
     if (tile.mine) {
-      // setStatusHandler(tile, 'mine');
       board.forEach((t) => {
         if (t.mine) {
           setStatusHandler(t, 'mine');
@@ -163,7 +178,8 @@ const useBoard = (): ReturnType => {
     setStatusHandler(tile, 'number');
 
     if (hasMinesTiles.length === 0) {
-      // neighborTiles.forEach((t) => handleLeftClick(t)); // ERROR HERE!!!
+      // Next line looks like piece of shit
+      neighborTiles.forEach((t, i) => setTimeout(() => reveal(t), i));
     } else {
       setContentHandler(tile, hasMinesTiles.length.toString());
     }

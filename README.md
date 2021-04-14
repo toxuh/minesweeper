@@ -10,7 +10,7 @@ Stack:
 WIP:
 - Open all neighbour empty tiles when empty tile clicked
 - Some code refactoring (this is trash pit now)
-- Add some styles
+- ~~Add some styles~~
 - Difficulty
 - Themes
 

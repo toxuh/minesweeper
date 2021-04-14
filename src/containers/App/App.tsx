@@ -1,15 +1,19 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
+import {
+  FaBomb,
+  FaFlag,
+  FaRegMeh,
+  FaRegSadCry,
+  FaRegSmileBeam,
+} from 'react-icons/fa';
 
-import { BOARD_SIZE } from '../../constants';
+import { BOARD_SIZE, PLURALS } from '../../constants';
 
 import useBoard from './useBoard';
 
-import messages from './messages';
 import './App.scss';
 
 const App: React.FC = () => {
-  const intl = useIntl();
   const {
     board,
     createBoard,
@@ -21,24 +25,32 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1 className="Title">{intl.formatMessage(messages.title)}</h1>
       <div className="Status">
-        {!endGame ? (
-          <span>
-            {intl.formatMessage(messages.minesLeft)}: {minesCount}
-          </span>
-        ) : (
-          <span>
-            {endGame === 'win'
-              ? intl.formatMessage(messages.win)
-              : intl.formatMessage(messages.lose)}
-          </span>
-        )}
-      </div>
-      <div>
-        <button type="button" onClick={createBoard}>
-          {intl.formatMessage(messages.tryAgain)}
-        </button>
+        <div className="Counter">{minesCount}</div>
+        <div className="GameButton">
+          {!endGame ? (
+            <span className="Default" role="presentation" onClick={createBoard}>
+              <FaRegMeh />
+            </span>
+          ) : (
+            <>
+              {endGame === 'win' ? (
+                <span className="Win" role="presentation" onClick={createBoard}>
+                  <FaRegSmileBeam />
+                </span>
+              ) : (
+                <span
+                  className="Lose"
+                  role="presentation"
+                  onClick={createBoard}
+                >
+                  <FaRegSadCry />
+                </span>
+              )}
+            </>
+          )}
+        </div>
+        <div className="Counter">100</div>
       </div>
       <div
         className="Board"
@@ -48,11 +60,21 @@ const App: React.FC = () => {
           <div
             key={tile.key}
             role="presentation"
-            className={tile.status}
+            className={`${tile.status} ${PLURALS[Number(tile.content)]}`}
             onClick={() => handleLeftClick(tile)}
             onContextMenu={(e) => handleRightClick(e, tile)}
           >
-            {tile.content}
+            {tile.status !== 'hidden' && (
+              <span>
+                {tile.status === 'number' ? (
+                  tile.content
+                ) : (
+                  <span>
+                    {tile.status === 'marked' ? <FaFlag /> : <FaBomb />}{' '}
+                  </span>
+                )}
+              </span>
+            )}
           </div>
         ))}
       </div>

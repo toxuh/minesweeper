@@ -1,12 +1,49 @@
 .App {
+  padding: 10px 0;
+
   .Title {
     margin: 20px;
   }
 
   .Status {
-    color: #ccc;
+    border: 8px solid #717171;
+    display: flex;
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 7px;
+
+    .Counter {
+      background: #2f0502;
+      color: #ef190b;
+      font-family: 'Nova Square', 'Arial', sans-serif;
+      min-width: 50px;
+      padding: 3px 10px;
+      text-align: center;
+    }
+
+    .GameButton {
+      span {
+        background: #dbdada;
+        border: 3px outset #aaa;
+        cursor: pointer;
+        padding: 7px 10px 2px;
+        position: relative;
+        top: 5px;
+
+        &.Default {
+          color: #8d712f;
+        }
+
+        &.Win {
+          color: #1f7300;
+        }
+
+        &.Lose {
+          color: #ef190b;
+        }
+      }
+    }
   }
 
   .Board {
@@ -22,6 +59,8 @@
       border: 2px solid #bbb;
       color: #fff;
       display: flex;
+      font-family: 'Courier New', 'Arial', sans-serif;
+      font-weight: 700;
       justify-content: center;
       height: 100%;
       user-select: none;
@@ -30,19 +69,59 @@
 
     & > .hidden {
       background-color: #bbb;
+      border: 5px outset #fff;
       cursor: pointer;
     }
 
     & > .marked {
-      background-color: #d9aa35;
+      background-color: #b6b6b6;
+      border: 5px outset #fff;
+      color: #2f0502;
+      font-size: 24px;
+
+      > span {
+        position: relative;
+        top: 3px;
+      }
     }
 
     & > .number {
-      background-color: transparent;
+      background-color: #b6b6b6;
+
+      &.one {
+        color: #3700ff;
+      }
+
+      &.two {
+        color: #1f7300;
+      }
+
+      &.three {
+        color: #ef190b;
+      }
+
+      &.four {
+        color: #180073;
+      }
+
+      &.five {
+        color: #6a0b05;
+      }
+
+      &.six {
+        color: #717171;
+      }
     }
 
     & > .mine {
-      background-color: #f00;
+      background-color: #b6b6b6;
+      color: #ef190b;
+      font-size: 24px;
+
+      > span {
+        position: relative;
+        top: 3px;
+      }
     }
   }
 }
